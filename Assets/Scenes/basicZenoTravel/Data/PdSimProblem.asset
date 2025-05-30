@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82bf94bd81663e5ea88fffcb1554d4c, type: 3}
+  m_Name: PdSimProblem
+  m_EditorClassIdentifier: 
+  domainName: cerm_qurm_ztravel-1-2_domain
+  problemName: cerm_qurm_ztravel-1-2
+  features:
+  - DecreaseEffects
+  - HierarchicalTyping
+  - IncreaseEffects
+  - FinalValue
+  - FlatTyping
+  - ActionBased
+  - GeneralNumericPlanning
+  - 61
+  - FluentsInNumericAssignments
+  typesDeclaration:
+    serializableTypeNodes:
+    - name: object
+      childrenCount: 2
+      indexFirstChild: 1
+    - name: locatable
+      childrenCount: 2
+      indexFirstChild: 2
+    - name: aircraft
+      childrenCount: 0
+      indexFirstChild: 3
+    - name: person
+      childrenCount: 0
+      indexFirstChild: 4
+    - name: city
+      childrenCount: 0
+      indexFirstChild: 5
+  fluents:
+  - name: located
+    type: 3
+    parameters:
+    - name: x
+      type: locatable
+    - name: c
+      type: city
+  - name: in
+    type: 3
+    parameters:
+    - name: p
+      type: person
+    - name: a
+      type: aircraft
+  - name: fuel
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  - name: distance
+    type: 2
+    parameters:
+    - name: c1
+      type: city
+    - name: c2
+      type: city
+  - name: slow-burn
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  - name: fast-burn
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  - name: capacity
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  - name: total-fuel-used
+    type: 2
+    parameters: []
+  - name: onboard
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  - name: zoom-limit
+    type: 2
+    parameters:
+    - name: a
+      type: aircraft
+  instantaneousActions:
+  - name: board
+    parameters:
+    - name: p
+      type: person
+    - name: a
+      type: aircraft
+    - name: c
+      type: city
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: located
+        parameters:
+        - p
+        - c
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: in
+        parameters:
+        - p
+        - a
+      actionParametersMap: 0000000001000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 2
+          valueSymbol: 1
+        fluentName: onboard
+        parameters:
+        - a
+      actionParametersMap: 01000000
+      effectKind: 2
+  - name: debark
+    parameters:
+    - name: p
+      type: person
+    - name: a
+      type: aircraft
+    - name: c
+      type: city
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: in
+        parameters:
+        - p
+        - a
+      actionParametersMap: 0000000001000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: located
+        parameters:
+        - p
+        - c
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 2
+          valueSymbol: 1
+        fluentName: onboard
+        parameters:
+        - a
+      actionParametersMap: 01000000
+      effectKind: 3
+  - name: flyslow
+    parameters:
+    - name: a
+      type: aircraft
+    - name: c1
+      type: city
+    - name: c2
+      type: city
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: located
+        parameters:
+        - a
+        - c1
+      actionParametersMap: 0000000001000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: located
+        parameters:
+        - a
+        - c2
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+  - name: flyfast
+    parameters:
+    - name: a
+      type: aircraft
+    - name: c1
+      type: city
+    - name: c2
+      type: city
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: located
+        parameters:
+        - a
+        - c1
+      actionParametersMap: 0000000001000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: located
+        parameters:
+        - a
+        - c2
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+  - name: refuel
+    parameters:
+    - name: a
+      type: aircraft
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 0
+          valueSymbol: 
+        fluentName: fuel
+        parameters:
+        - a
+      actionParametersMap: 00000000
+      effectKind: 1
+  durativeActions: []
