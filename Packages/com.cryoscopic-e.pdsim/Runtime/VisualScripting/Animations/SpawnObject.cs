@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.VisualScripting;
+using PDSim.Simulation;
 
 namespace PDSim.VisualScripting.Animations
 {
@@ -27,6 +28,11 @@ namespace PDSim.VisualScripting.Animations
         [DoNotSerialize]
         public ValueInput objectRotation;
 
+        [DoNotSerialize]
+        public ValueOutput simulationObject;
+
+        private GameObject simulationObjectValue;
+
 
         protected override void Definition()
         {
@@ -38,6 +44,8 @@ namespace PDSim.VisualScripting.Animations
             parentObject = ValueInput<GameObject>("parentObject", null);
             objectPosition = ValueInput<Vector3>("objectPosition", Vector3.zero);
             objectRotation = ValueInput<Vector3>("objectRotation", Quaternion.identity.eulerAngles);
+
+            simulationObject = ValueOutput<GameObject>("Simulation Object", (flow) => { return simulationObjectValue; });
 
             Succession(inputTrigger, outputTrigger);
             Requirement(prefabObject, inputTrigger);
@@ -66,6 +74,7 @@ namespace PDSim.VisualScripting.Animations
                 newObject.name = newObjectName;
             }
 
+            simulationObjectValue = newObject;
 
             return outputTrigger;
         }
