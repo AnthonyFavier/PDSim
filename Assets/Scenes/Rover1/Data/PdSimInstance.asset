@@ -1,0 +1,411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bf7a6cc511a7944ae3d20c7320e177, type: 3}
+  m_Name: PdSimInstance
+  m_EditorClassIdentifier: 
+  objects:
+  - name: general
+    type: lander
+  - name: colour
+    type: mode
+  - name: high_res
+    type: mode
+  - name: low_res
+    type: mode
+  - name: rover0
+    type: rover
+  - name: rover0store
+    type: store
+  - name: waypoint0
+    type: waypoint
+  - name: waypoint1
+    type: waypoint
+  - name: waypoint2
+    type: waypoint
+  - name: waypoint3
+    type: waypoint
+  - name: camera0
+    type: camera
+  - name: camera1
+    type: camera
+  - name: objective0
+    type: objective
+  - name: objective1
+    type: objective
+  init:
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint0
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint1
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint1
+    - waypoint2
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint2
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint1
+    - waypoint3
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint3
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint2
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint0
+    - waypoint2
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint2
+    - waypoint3
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint3
+    - waypoint2
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint3
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible
+    parameters:
+    - waypoint0
+    - waypoint3
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: at_soil_sample
+    parameters:
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: at_rock_sample
+    parameters:
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: at_lander
+    parameters:
+    - general
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: channel_free
+    parameters:
+    - general
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: at
+    parameters:
+    - rover0
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: available
+    parameters:
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: store_of
+    parameters:
+    - rover0store
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: empty
+    parameters:
+    - rover0store
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: equipped_for_soil_analysis
+    parameters:
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: equipped_for_rock_analysis
+    parameters:
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: equipped_for_imaging
+    parameters:
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint0
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint1
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint0
+    - waypoint2
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint2
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint0
+    - waypoint3
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: can_traverse
+    parameters:
+    - rover0
+    - waypoint3
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: on_board
+    parameters:
+    - camera0
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: calibration_target
+    parameters:
+    - camera0
+    - objective0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: supports
+    parameters:
+    - camera0
+    - colour
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: supports
+    parameters:
+    - camera0
+    - high_res
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: supports
+    parameters:
+    - camera0
+    - low_res
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: on_board
+    parameters:
+    - camera1
+    - rover0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: calibration_target
+    parameters:
+    - camera1
+    - objective1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: supports
+    parameters:
+    - camera1
+    - high_res
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible_from
+    parameters:
+    - objective0
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible_from
+    parameters:
+    - objective1
+    - waypoint0
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible_from
+    parameters:
+    - objective1
+    - waypoint1
+  - value:
+      contentCase: 4
+      valueSymbol: True
+    fluentName: visible_from
+    parameters:
+    - objective1
+    - waypoint2
+  plan:
+  - id: 
+    name: navigate
+    parameters:
+    - rover0
+    - waypoint1
+    - waypoint0
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: calibrate
+    parameters:
+    - rover0
+    - camera0
+    - objective0
+    - waypoint0
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: take_image
+    parameters:
+    - rover0
+    - waypoint0
+    - objective1
+    - camera0
+    - low_res
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: communicate_image_data
+    parameters:
+    - rover0
+    - general
+    - objective1
+    - low_res
+    - waypoint0
+    - waypoint1
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: sample_rock
+    parameters:
+    - rover0
+    - rover0store
+    - waypoint0
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: communicate_rock_data1
+    parameters:
+    - rover0
+    - general
+    - waypoint0
+    - waypoint0
+    - waypoint1
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: drop
+    parameters:
+    - rover0
+    - rover0store
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: sample_soil
+    parameters:
+    - rover0
+    - rover0store
+    - waypoint0
+    startTime: -1
+    endTime: -1
+  - id: 
+    name: communicate_soil_data1
+    parameters:
+    - rover0
+    - general
+    - waypoint0
+    - waypoint0
+    - waypoint1
+    startTime: -1
+    endTime: -1

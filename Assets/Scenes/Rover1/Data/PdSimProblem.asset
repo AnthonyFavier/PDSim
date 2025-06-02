@@ -1,0 +1,602 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82bf94bd81663e5ea88fffcb1554d4c, type: 3}
+  m_Name: PdSimProblem
+  m_EditorClassIdentifier: 
+  domainName: cerm_qurm_htn_rover_pb_01_domain
+  problemName: cerm_qurm_htn_rover_pb_01
+  features:
+  - ActionBased
+  - FlatTyping
+  typesDeclaration:
+    serializableTypeNodes:
+    - name: object
+      childrenCount: 7
+      indexFirstChild: 1
+    - name: rover
+      childrenCount: 0
+      indexFirstChild: 2
+    - name: waypoint
+      childrenCount: 0
+      indexFirstChild: 3
+    - name: store
+      childrenCount: 0
+      indexFirstChild: 4
+    - name: camera
+      childrenCount: 0
+      indexFirstChild: 5
+    - name: objective
+      childrenCount: 0
+      indexFirstChild: 6
+    - name: mode
+      childrenCount: 0
+      indexFirstChild: 7
+    - name: lander
+      childrenCount: 0
+      indexFirstChild: 8
+  fluents:
+  - name: available
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+  - name: at
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+    - name: p
+      type: waypoint
+  - name: visible
+    type: 3
+    parameters:
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+  - name: can_traverse
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+  - name: store_of
+    type: 3
+    parameters:
+    - name: s
+      type: store
+    - name: x
+      type: rover
+  - name: empty
+    type: 3
+    parameters:
+    - name: s
+      type: store
+  - name: full
+    type: 3
+    parameters:
+    - name: s
+      type: store
+  - name: equipped_for_soil_analysis
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+  - name: at_soil_sample
+    type: 3
+    parameters:
+    - name: p
+      type: waypoint
+  - name: have_soil_analysis
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+    - name: p
+      type: waypoint
+  - name: equipped_for_rock_analysis
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+  - name: at_rock_sample
+    type: 3
+    parameters:
+    - name: p
+      type: waypoint
+  - name: have_rock_analysis
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+    - name: p
+      type: waypoint
+  - name: equipped_for_imaging
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+  - name: calibration_target
+    type: 3
+    parameters:
+    - name: c
+      type: camera
+    - name: o
+      type: objective
+  - name: visible_from
+    type: 3
+    parameters:
+    - name: o
+      type: objective
+    - name: p
+      type: waypoint
+  - name: on_board
+    type: 3
+    parameters:
+    - name: c
+      type: camera
+    - name: x
+      type: rover
+  - name: calibrated
+    type: 3
+    parameters:
+    - name: c
+      type: camera
+    - name: x
+      type: rover
+  - name: supports
+    type: 3
+    parameters:
+    - name: c
+      type: camera
+    - name: m
+      type: mode
+  - name: have_image
+    type: 3
+    parameters:
+    - name: x
+      type: rover
+    - name: o
+      type: objective
+    - name: m
+      type: mode
+  - name: at_lander
+    type: 3
+    parameters:
+    - name: l
+      type: lander
+    - name: p
+      type: waypoint
+  - name: channel_free
+    type: 3
+    parameters:
+    - name: l
+      type: lander
+  - name: communicated_soil_data
+    type: 3
+    parameters:
+    - name: p
+      type: waypoint
+  - name: communicated_rock_data
+    type: 3
+    parameters:
+    - name: p
+      type: waypoint
+  - name: communicated_image_data
+    type: 3
+    parameters:
+    - name: o
+      type: objective
+    - name: m
+      type: mode
+  - name: visited
+    type: 3
+    parameters:
+    - name: p
+      type: waypoint
+  instantaneousActions:
+  - name: navigate
+    parameters:
+    - name: x
+      type: rover
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: at
+        parameters:
+        - x
+        - p1
+      actionParametersMap: 0000000001000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: at
+        parameters:
+        - x
+        - p2
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+  - name: sample_soil
+    parameters:
+    - name: x
+      type: rover
+    - name: s
+      type: store
+    - name: p
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: empty
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: at_soil_sample
+        parameters:
+        - p
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: full
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: have_soil_analysis
+        parameters:
+        - x
+        - p
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+  - name: sample_rock
+    parameters:
+    - name: x
+      type: rover
+    - name: s
+      type: store
+    - name: p
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: empty
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: at_rock_sample
+        parameters:
+        - p
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: full
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: have_rock_analysis
+        parameters:
+        - x
+        - p
+      actionParametersMap: 0000000002000000
+      effectKind: 1
+  - name: drop
+    parameters:
+    - name: x
+      type: rover
+    - name: s
+      type: store
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: full
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: empty
+        parameters:
+        - s
+      actionParametersMap: 01000000
+      effectKind: 1
+  - name: calibrate
+    parameters:
+    - name: x
+      type: rover
+    - name: c
+      type: camera
+    - name: o
+      type: objective
+    - name: p
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: calibrated
+        parameters:
+        - c
+        - x
+      actionParametersMap: 0100000000000000
+      effectKind: 1
+  - name: take_image
+    parameters:
+    - name: x
+      type: rover
+    - name: p
+      type: waypoint
+    - name: o
+      type: objective
+    - name: c
+      type: camera
+    - name: m
+      type: mode
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: calibrated
+        parameters:
+        - c
+        - x
+      actionParametersMap: 0300000000000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: have_image
+        parameters:
+        - x
+        - o
+        - m
+      actionParametersMap: 000000000200000004000000
+      effectKind: 1
+  - name: communicate_soil_data1
+    parameters:
+    - name: x
+      type: rover
+    - name: l
+      type: lander
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    - name: p3
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: communicated_soil_data
+        parameters:
+        - p1
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: available
+        parameters:
+        - x
+      actionParametersMap: 00000000
+      effectKind: 1
+  - name: communicate_soil_data2
+    parameters:
+    - name: x
+      type: rover
+    - name: l
+      type: lander
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: communicated_soil_data
+        parameters:
+        - p1
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: available
+        parameters:
+        - x
+      actionParametersMap: 00000000
+      effectKind: 1
+  - name: communicate_rock_data1
+    parameters:
+    - name: x
+      type: rover
+    - name: l
+      type: lander
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    - name: p3
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: communicated_rock_data
+        parameters:
+        - p1
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: available
+        parameters:
+        - x
+      actionParametersMap: 00000000
+      effectKind: 1
+  - name: communicate_rock_data2
+    parameters:
+    - name: x
+      type: rover
+    - name: l
+      type: lander
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: communicated_rock_data
+        parameters:
+        - p1
+      actionParametersMap: 02000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: available
+        parameters:
+        - x
+      actionParametersMap: 00000000
+      effectKind: 1
+  - name: communicate_image_data
+    parameters:
+    - name: x
+      type: rover
+    - name: l
+      type: lander
+    - name: o
+      type: objective
+    - name: m
+      type: mode
+    - name: p1
+      type: waypoint
+    - name: p2
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: communicated_image_data
+        parameters:
+        - o
+        - m
+      actionParametersMap: 0200000003000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: available
+        parameters:
+        - x
+      actionParametersMap: 00000000
+      effectKind: 1
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: channel_free
+        parameters:
+        - l
+      actionParametersMap: 01000000
+      effectKind: 1
+  - name: visit
+    parameters:
+    - name: p
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: True
+        fluentName: visited
+        parameters:
+        - p
+      actionParametersMap: 00000000
+      effectKind: 1
+  - name: unvisit
+    parameters:
+    - name: p
+      type: waypoint
+    effects:
+    - fluentAssignment:
+        value:
+          contentCase: 4
+          valueSymbol: False
+        fluentName: visited
+        parameters:
+        - p
+      actionParametersMap: 00000000
+      effectKind: 1
+  durativeActions: []
